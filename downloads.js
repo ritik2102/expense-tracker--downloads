@@ -7,7 +7,7 @@ const downloadsHead = document.getElementById('downloads-head');
 window.addEventListener('DOMContentLoaded', async () => {
     try {
         // Every time the server restarts, the backend might not be available, so we are just giving time for backend to start properly
-        const response = await axios.get('http://localhost:3000/purchase/premiumOrNot', { headers: { "Authorization": token } });
+        const response = await axios.get('http://16.171.5.97:3000/purchase/premiumOrNot', { headers: { "Authorization": token } });
         const isPremium = response.data.isPremium;
         if (isPremium === 'true') {
             razorpayBtn.innerHTML = 'Premium User 👑';
@@ -19,7 +19,7 @@ window.addEventListener('DOMContentLoaded', async () => {
             boardButton.onclick = async function (e) {
 
                 e.preventDefault();
-                const res = await axios.get('http://localhost:3000/premium/getLeaderboard', { headers: { "Authorization": token } });
+                const res = await axios.get('http://16.171.5.97:3000/premium/getLeaderboard', { headers: { "Authorization": token } });
                 const data = res.data.resData;
 
                 const heading = document.createElement('h2');
@@ -38,7 +38,7 @@ window.addEventListener('DOMContentLoaded', async () => {
                 }
             }
 
-            await axios.get('http://localhost:3000/users/getDownloads', { headers: { "Authorization": token } })
+            await axios.get('http://16.171.5.97:3000/users/getDownloads', { headers: { "Authorization": token } })
                 .then(response => {
                     const files = response.data.response;
                     downloadsHead.appendChild(document.createTextNode('Downloaded files'));
